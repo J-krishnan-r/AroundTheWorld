@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Create Destination{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Create a New Destination</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.name.label_tag }}
+                            {{ form.name|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.weather.label_tag }}
+                            {{ form.weather|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.state.label_tag }}
+                            {{ form.state|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.district.label_tag }}
+                            {{ form.district|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.google_map_link.label_tag }}
+                            {{ form.google_map_link|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.description.label_tag }}
+                            {{ form.description|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.image.label_tag }}
+                            {{ form.image|add_class:"form-control" }}
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Save Destination</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

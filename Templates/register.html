@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Register</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3 position-relative">
+                            {{ form.username.label_tag }}
+                            {{ form.username|add_class:"form-control" }}
+                            <div id="username-help" class="form-text position-absolute bg-light p-2 shadow rounded" style="display: none; top: 100%; left: 0; z-index: 10;">
+                                Enter a unique username. It will be used to log in.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            {{ form.password.label_tag }}
+                            {{ form.password|add_class:"form-control" }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.email.label_tag }}
+                            {{ form.email|add_class:"form-control" }}
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'user_login' %}" class="btn btn-secondary">Already have an account? Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const usernameInput = document.getElementById('id_username');
+    const usernameHelp = document.getElementById('username-help');
+
+    usernameInput.addEventListener('focus', () => {
+        usernameHelp.style.display = 'block';
+    });
+
+    usernameInput.addEventListener('blur', () => {
+        usernameHelp.style.display = 'none';
+    });
+</script>
+{% endblock %}

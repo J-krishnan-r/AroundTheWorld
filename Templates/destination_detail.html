@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ destination.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{{ destination.image.url }}" alt="{{ destination.name }}" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-4">
+            <h1>{{ destination.name }}</h1>
+            <p><strong>Weather:</strong> {{ destination.weather }}</p>
+            <p><strong>State:</strong> {{ destination.state }}</p>
+            <p><strong>District:</strong> {{ destination.district }}</p>
+            <p><strong>Description:</strong> {{ destination.description }}</p>
+            <p><strong>Google Map:</strong> <a href="{{ destination.google_map_link }}" target="_blank">View on Map</a></p>
+            <div class="mt-4">
+                <a href="{% url 'update_destination' destination.id %}" class="btn btn-warning">
+                    <i class="bi bi-pencil-square"></i> Update
+                </a>
+                <a href="{% url 'delete_destination' destination.id %}" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

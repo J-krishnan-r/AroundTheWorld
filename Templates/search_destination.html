@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Search Destinations</h1>
+<form method="get" action="{% url 'search_destination' %}" class="mt-4">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search by name">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+<ul class="list-group mt-4">
+    {% for destination in destinations %}
+        <li class="list-group-item">{{ destination.name }}</li>
+    {% empty %}
+        <li class="list-group-item">No destinations found.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}" class="btn btn-secondary mt-3">Back to Home</a>
+{% endblock %}

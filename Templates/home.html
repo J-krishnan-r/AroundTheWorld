@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Welcome to Around The World</h1>
+
+<h2 class="text-center mt-4">Your Destinations</h2>
+<div class="row mt-4">
+    {% for destination in destinations %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'destination_detail' destination.id %}" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow">
+                    <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+                        <img src="{{ destination.image.url }}" alt="{{ destination.name }}" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                        <div class="position-absolute bottom-0 start-0 w-100 text-white p-2" style="background: rgba(0, 0, 0, 0.6);">
+                            <h5 class="mb-0">{{ destination.name }}</h5>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ destination.description|truncatewords:20 }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% empty %}
+        <div class="col-12">
+            <p class="text-center">No destinations available.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

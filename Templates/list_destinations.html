@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}List Destinations{% endblock %}
+
+{% block content %}
+<h1 class="text-center">All Destinations</h1>
+<ul class="list-group mt-4">
+    {% for destination in destinations %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ destination.name }}
+            <span>
+                <a href="{% url 'update_destination' destination.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'delete_destination' destination.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </span>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No destinations available.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}" class="btn btn-secondary mt-3">Back to Home</a>
+{% endblock %}

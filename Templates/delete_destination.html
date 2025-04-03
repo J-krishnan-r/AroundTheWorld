@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Destination{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Delete Destination</h1>
+<p class="text-center">Are you sure you want to delete "{{ destination.name }}"?</p>
+<form method="post" class="text-center">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'list_destinations' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
