@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'AroundTheWorld2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'AroundTheWorld',
-        'USER': 'postgres',
-        'PASSWORD': 'JK@2002r',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'aroundtheworld',  # Database name
+        'USER': 'aroundtheworld_user',  # Username
+        'PASSWORD': '2RHkJn3bmw3dYKuVTddUHJAZibrfPes0',  # Password
+        'HOST': 'dpg-cvniatk9c44c73eagiig-a.oregon-postgres.render.com',  # Hostname
+        'PORT': '5432',  # Port
     }
 }
 
