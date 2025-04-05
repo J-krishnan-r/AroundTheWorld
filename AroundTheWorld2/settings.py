@@ -79,7 +79,9 @@ WSGI_APPLICATION = 'AroundTheWorld2.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://user:password@host:port/dbname')
+    'default': dj_database_url.config(
+        default=f"postgresql://{os.getenv('PGUSER')}:{os.getenv('PGPASSWORD')}@{os.getenv('PGHOST')}:{os.getenv('PGPORT')}/{os.getenv('PGDATABASE')}"
+    )
 }
 
 
