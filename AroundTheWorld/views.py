@@ -78,6 +78,9 @@ def register(request):
             user.set_password(form.cleaned_data['password'])
             user.save()
             return redirect('user_login')
+        else:
+            # Log form errors for debugging
+            logger.error(f"Registration form errors: {form.errors}")
     else:
         form = UserForm()
     return render(request, 'register.html', {'form': form})

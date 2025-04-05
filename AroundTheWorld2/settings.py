@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-ho1nvr*5ssm0d@n71z)^l=lqhg644gm$p5fd9!xs8=)hp$40l_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['aroundtheworld-3qt9.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,14 +79,7 @@ WSGI_APPLICATION = 'AroundTheWorld2.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'aroundtheworld',  # Database name
-        'USER': 'aroundtheworld_user',  # Username
-        'PASSWORD': '2RHkJn3bmw3dYKuVTddUHJAZibrfPes0',  # Password
-        'HOST': 'dpg-cvniatk9c44c73eagiig-a.oregon-postgres.render.com',  # Hostname
-        'PORT': '5432',  # Port
-    }
+    'default': dj_database_url.config(default='postgres://user:password@host:port/dbname')
 }
 
 

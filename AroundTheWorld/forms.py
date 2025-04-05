@@ -1,5 +1,6 @@
 from django import forms
-from .models import Destination,User
+from .models import Destination
+from django.contrib.auth.models import User
 
 class CreateForm(forms.ModelForm):  
     class Meta:
