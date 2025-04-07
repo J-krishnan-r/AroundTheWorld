@@ -61,7 +61,8 @@ def delete_destination(request, pk):
 
 def destination_detail(request, pk):
     destination = Destination.objects.get(pk=pk)
-    return render(request, 'destination_detail.html', {'destination': destination})
+    image_url = destination.image.url if destination.image else '/static/images/default.jpg'
+    return render(request, 'destination_detail.html', {'destination': destination, 'image_url': image_url})
 
 def home(request):
     destinations = Destination.objects.all()
