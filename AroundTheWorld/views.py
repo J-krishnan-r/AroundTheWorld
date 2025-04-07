@@ -64,11 +64,13 @@ def destination_detail(request, pk):
     return render(request, 'destination_detail.html', {'destination': destination})
 
 def home(request):
-    if request.user.is_authenticated:
-        destinations = Destination.objects.all()
-        return render(request, 'home.html', {'destinations': destinations})
-    else:
-        return redirect('user_login')
+    destinations = Destination.objects.all()
+    for destination in destinations:
+        if not destination.image:
+            destination.image_url = None
+        else:
+            destination.image_url = destination.image.url
+    return render(request, 'home.html', {'destinations': destinations})
 
 def register(request):
     if request.method == "POST":

@@ -12,7 +12,11 @@
             <a href="{% url 'destination_detail' destination.id %}" class="text-decoration-none text-dark">
                 <div class="card h-100 shadow">
                     <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
-                        <img src="{{ destination.image.url }}" alt="{{ destination.name }}" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                        {% if destination.image %}
+                            <img src="{{ destination.image.url }}" alt="{{ destination.name }}" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                        {% else %}
+                            <img src="/static/images/default.jpg" alt="Default Image" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                        {% endif %}
                         <div class="position-absolute bottom-0 start-0 w-100 text-white p-2" style="background: rgba(0, 0, 0, 0.6);">
                             <h5 class="mb-0">{{ destination.name }}</h5>
                         </div>
