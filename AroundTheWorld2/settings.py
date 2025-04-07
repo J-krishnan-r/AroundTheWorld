@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ho1nvr*5ssm0d@n71z)^l=lqhg644gm$p5fd9!xs8=)hp$40l_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['AroundTheWorld2.onrender.com']
 
 
 # Application definition
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'AroundTheWorld2.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"postgresql://{os.getenv('PGUSER')}:{os.getenv('PGPASSWORD')}@{os.getenv('PGHOST')}:{os.getenv('PGPORT')}/{os.getenv('PGDATABASE')}"
+        default="postgresql://aroundtheworld_user:2RHkJn3bmw3dYKuVTddUHJAZibrfPes0@dpg-cvniatk9c44c73eagiig-a.oregon-postgres.render.com:5432/aroundtheworld"
     )
 }
 
